@@ -1,0 +1,38 @@
+# gitignore specify the blacklist by pattern
+# won't affect tracked files, only applied to untracked
+
+# * : match for a string without / letter and with length >= 0
+#  !! But with only an asterisk "*", it may act like ** !!
+# ? : match for a letter but not /
+# [0-9]: match for a string withou / lettter adn with length = 0-9
+# ** : match for a string can have / letter
+# ! : negate
+# / at the end of pattern : indicate it is a directory, or it may match a file with the same name
+
+# Some rules:
+# 1. Read from top to bottom, which means the priority of follower will be higher
+#
+# !! IMPORTANT!!
+#
+# 2. It is not possible to re-include a file if a parent directory of that file is excluded.
+#    So assure its parent directory is in white list before want to re-include something
+#    e.g. After /*, want to white list DIR/file2
+#        !DIR  	    -- re-include parent directory
+#	 DIR/* 	    -- exclude file1, file2, file3 .... in DIR
+#	 !DIR/file2 -- re-include DIR/file2
+#    	        	  
+# 3. Use "/*" instead of "*"
+#    when you use "*" or "/**" it will recursively exclude files
+#    so it will exclude DIR, DIR/file1, DIR/file2, ...
+#    and then you add a new pattern "!DIR"
+#    but it still exclude DIR/file1, DIR/file2, ...
+#    for git, it only cares about file but not directory, so DIR will not appear on untrack of git status
+#    so use "/*" it will only exclude top level files and directories
+
+/*
+!init.el
+!.gitignore
+!my-lisp/
+
+
+
