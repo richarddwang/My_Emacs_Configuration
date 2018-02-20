@@ -12,16 +12,22 @@
 ;;-----------------
 ;; Kill/Cut
 ;;-----------------
+;; Word
 (global-set-key (kbd "M-<up>") 'backward-kill-word)
 (global-set-key (kbd "M-<down>") 'kill-word)
+;; Sexp
 (global-set-key (kbd "S-<up>") 'backward-kill-sexp)
 (global-set-key (kbd "S-<down>") 'kill-sexp)
+;; Line
 (global-set-key (kbd "C-k") 'kill-line-or-region)
 (global-set-key (kbd "C-S-k") 'backward-kill-line)
 (global-set-key (kbd "M-k") 'kill-indented-line-p)
+;; Brackets
+(global-set-key (kbd "M-S-<up>") 'kill-backward-bracket-content)
+(global-set-key (kbd "M-S-<down>") 'kill-forward-bracket-content)
+;; Paragraph
 (global-set-key (kbd "C-M-k") 'kill-paragraph)
 (global-set-key (kbd "C-M-K") 'backward-kill-paragraph)
-(global-set-key (kbd "C-z") 'zap-to-char)
 
 (defun kill-line-or-region ()
   (interactive)
@@ -29,6 +35,7 @@
       (kill-region (region-beginning) (region-end))
     (kill-line))
   )
+
 (defun backward-kill-line ()
   (interactive)
   (mark-text-object-p 'beginning-of-line nil nil)
@@ -46,9 +53,9 @@
 ;;--------------
 ;; Paste
 ;;--------------
-(global-set-key (kbd "C-p") 'yank) ;; and set this in org mode in Org.el
-(global-set-key (kbd "M-p") 'yank-pop)
-(global-set-key (kbd "C-M-p") 'helm-show-kill-ring)
+(global-set-key (kbd "C-t") 'yank) ;; and set this in org mode in Org.el
+(global-set-key (kbd "M-t") 'yank-pop)
+(global-set-key (kbd "C-M-t") 'helm-show-kill-ring)
 
 ;;--------------
 ;; Delete
@@ -111,19 +118,24 @@
 ;;==================================================
 ;;                    Navigation
 ;;==================================================
-;;--------------
-;; Built-in
-;;--------------
+;; Word
 (global-set-key (kbd "M-<left>") 'backward-word)
 (global-set-key (kbd "M-<right>") 'forward-word)
+;; Sexp
 (global-set-key (kbd "S-<left>") 'backward-sexp)
 (global-set-key (kbd "S-<right>") 'forward-sexp)
-
-(global-set-key (kbd "C-q") 'back-to-indentation)
-
-(global-set-key (kbd "M-a") 'backward-paragraph)
+;; Line
+(global-set-key (kbd "C-q") 'continuable-back-to-indentation)
+(global-set-key (kbd "C-a") 'continuable-beginning-of-line)
+(global-set-key (kbd "C-e") 'continuable-end-of-line)
+;; Bracket
+(global-set-key (kbd "M-S-<left>") 'sp-beginning-of-sexp)
+(global-set-key (kbd "M-S-<right>") 'sp-end-of-sexp)
+;; Paragraph
+(global-set-key (kbd "M-a") 'fixed-backward-paragraph)
 (global-set-key (kbd "M-e") 'forward-paragraph)
-;; These default binding are convenient
+;; Function
+;; default binding
 ;; C-M-a : backward-funciton
 ;; C-M-e : forward-funciton
 
@@ -133,7 +145,8 @@
 (global-set-key (kbd "C-f") 'avy-goto-char-timer)
 (global-set-key (kbd "M-f") 'avy-goto-word-1)
 (global-set-key (kbd "C-b") 'avy-pop-mark)
-
+(global-set-key (kbd "M-b") 'helm-mark-ring)
+(global-set-key (kbd "C-M-b") 'helm-global-mark-ring)
 (use-package goto-last-change
   :demand
   :bind (("M-," . goto-last-change)

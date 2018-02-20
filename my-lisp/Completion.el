@@ -16,7 +16,7 @@
   :bind (:map company-active-map
 	      ("<tab>" . company-complete-selection)
 	      ("TAB" . company-complete-selection)
-	      ("'" . company-complete-common-or-cycle)
+	      ;; ("'" . company-complete-common-or-cycle)
 	      ;; cancel enter to choose suggestion (originally default)
 	      ("<return>" . nil)
 	      ("RET" . nil))

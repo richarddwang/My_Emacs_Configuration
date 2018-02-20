@@ -11,7 +11,6 @@
   ;; For interactive shell to use python3
   (setq python-shell-interpreter "python3")
   :bind (:map elpy-mode-map
-	      ("C-'" . elpy-test)
 	      ;; edit
 	      ;; original:: (elpy-nav-move-line-or-region-up)
 	      ("M-<up>" . backward-kill-word)
@@ -26,6 +25,30 @@
 	      ;; original:: (elpy-nav-indent-shift-right)
 	      ("M-<right>" . forward-word)
 	      )
+  )
+
+;; =================================================
+;;                       Panel
+;; =================================================
+(defhydra hydra-python-panel (:color blue)
+  "Python-mode"
+  ("f" elpy-format-code "Format code" :column "Actions")
+  ("c" hydra-flycheck/body "Flycheck")
+  ("t" elpy-test "Test")
+  ("d" elpy-doc "Fly Doc")
+  ("r" elpy-send-buffer "Run")
+  ;; Send to shell
+  ("e" hydra-python-eval-panel/body "Eval")
+  )
+(defhydra hydra-python-eval-panel (:color blue)
+  "Eval"
+  ("s" elpy-shell-send-statement        "Statement" :column "Object")
+  ("f" elpy-shell-send-defun            "Function")
+  ("c" elpy-shell-send-declass          "Class")
+  ("g" elpy-shell-send-group            "Group")
+  ("w" elpy-shell-send-codecell         "Codecell")
+  ("r" elpy-shell-send-region-or-buffer "Region or Buffer")
+  ("b" elpy-shell-send-buffer           "Buffer")
   )
 
 (provide 'Python)

@@ -23,27 +23,48 @@
   	helm-imenu-fuzzy-match    t
 	helm-locate-fuzzy-match nil
 	)
+  
+  ;;always open helm buffer on above below left right side
+  (setq helm-split-window-default-side 'right)
+
+  ;; Set the exact command and colors used by "helm-do-grep-ag"
+  (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
+  (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+  ;; (setq helm-grep-ag-command "ag --line-numbers -S --hidden --color --color-match '31;43' --nogroup %s %s %s")
+  ;; (setq helm-grep-ag-pipe-cmd-switches '("--color-match '31;43'"))
+  ;;----------------
+  ;; Recentf
+  ;;----------------
   ;; 最近のファイル500個を保存する
   (setq recentf-max-saved-items 500)
   ;; 最近使ったファイルに加えないファイルを
   ;; 正規表現で指定する
   (setq recentf-exclude
-	'("/TAGS$" "/var/tmp/"))
+	'("/TAGS$" "/var/tmp/")) 
   
+  ;;----------------
+  ;; Source
+  ;;----------------  
   ;; decide which function should be in and the blocks' order
   (setq helm-for-files-preferred-list
 	'(helm-source-buffers-list
 	  helm-source-files-in-current-dir
 	  helm-source-recentf
-	  helm-source-bookmarks
 	  helm-source-file-cache
-	  ;; 必要とあれば
-	  ;; helm-source-bookmark-set
-	  ;;helm-source-findutils
-	  helm-source-locate))
-  ;;always open helm buffer on above below left right side
-  (setq helm-split-window-default-side 'right)
-  ;;
+	  helm-source-locate
+	  ;; Other source:
+	  ;; helm-source-bookmarks
+	  ;; helm-source-findutils <-- not valid now (?)
+	  
+	  ;; Source from projectile:
+	  ;; helm-source-projectile-files-list
+	  ;; helm-source-projectile-buffers-list
+	  ;; helm-source-projectile-recentf-list
+	  ))
+  
+  ;;----------------
+  ;; Keybiding
+  ;;----------------
   :bind (("M-x" . helm-M-x)
 	 ("C-x C-f" . helm-for-files)
 	 ("C-x M-f" . helm-projectile)
@@ -51,7 +72,11 @@
 	 )
   )
 
-
+(use-package helm-projectile
+  :ensure t
+  :ensure helm
+  :config
+  )
 
 ;; ======================== End ====================
 (provide 'Helm_config)

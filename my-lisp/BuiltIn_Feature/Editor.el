@@ -31,10 +31,21 @@
   )
 
 ;;==================================================
-;;                     Buffer
+;;                    Buffer
 ;;==================================================
 (global-set-key (kbd "C-x C-b") 'helm-mini)
 (global-set-key (kbd "C-x b") 'ido-switch-buffer)
+
+
+;;==================================================
+;;                     Parens
+;;==================================================
+(use-package smartparens
+  :ensure t
+  :config
+  ;; show-smartparens-mode is similar to show-paren-mode, but works for all the user-defined pairs which are recognized by sp-get-sexp
+  (show-smartparens-global-mode t)
+  )
 
 ;;==================================================
 ;;                Backup / Autosave

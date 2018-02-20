@@ -14,7 +14,7 @@
   (setq dumb-jump-selector 'helm)
   ;; use git-grep if it's a git project (because it's the fastest),
   ;; but will you use whatever you set here in any other situation
-  (setq dumb-jump-force-searcher 'ag)
+  (setq dumb-jump-prefer-searcher 'rg)
   :bind (("M-g o" . dumb-jump-go-other-window)
 	 ("M-g j" . dumb-jump-go)
 	 ("M-g i" . dumb-jump-go-prompt)

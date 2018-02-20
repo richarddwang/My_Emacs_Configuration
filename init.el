@@ -49,41 +49,16 @@
 (load-directory "~/.emacs.d/my-lisp/BuiltIn_Feature")
 (load-directory "~/.emacs.d/my-lisp/Visual_Support")
 (load-directory "~/.emacs.d/my-lisp/Solo_Package_Configuration")
+(load-directory "~/.emacs.d/my-lisp/Text_Object")
+(load-directory "~/.emacs.d/my-lisp/Panel")
 (load-directory "~/.emacs.d/my-lisp/Programming")
 (load-directory "~/.emacs.d/my-lisp/Org")
-
-;; (load "~/.emacs.d/my-lisp/Preload.el")
-;; (load "~/.emacs.d/my-lisp/Theme.el")
-;; (load "~/.emacs.d/my-lisp/Editor.el")
-;; (load "~/.emacs.d/my-lisp/System.el")
-;; (load "~/.emacs.d/my-lisp/Completion.el")
-;; (load "~/.emacs.d/my-lisp/Navigation.el")
-;; (load "~/.emacs.d/my-lisp/Org.el")
-;; (load "~/.emacs.d/my-lisp/Syntax_Check.el")
-;; (load "~/.emacs.d/my-lisp/Symbol.el")
-;; (load "~/.emacs.d/my-lisp/Edit.el")
-;; (load "~/.emacs.d/my-lisp/Hydra.el")
-;; (load "~/.emacs.d/my-lisp/Try.el")
-;; (load "~/.emacs.d/my-lisp/Programming/C-mode.el")
-;; the example of loading files only if it exits
-;; (defun load-if-exits (f)
-;;   "Arg F is elisp file name, load the file only if it exits."
-;;   (if (file-readable-p f)
-;;       (load-file f)))
-;; (load-if-exits "~/Dropbox/share/emacs-config/share.el")
-
-
-
-
-
 
 ;;=============================================================
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -92,8 +67,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (highlight-indent-guides elpy hide-region helm-projectile helm goto-last-change company-irony-c-headers company-yasnippet company-c-headers flycheck-irony company-irony company irony projectile dumb-jump hydra sr-speedbar counsel org-download use-package swiper async avy-migemo ace-pinyin w3m xah-math-input flycheck hl-line+ switch-window yasnippet)))
- )
+    (helm-ag smartparens-config helm-projectile highlight-indent-guides elpy hide-region helm goto-last-change company-irony-c-headers company-yasnippet company-c-headers flycheck-irony company-irony company irony dumb-jump hydra sr-speedbar counsel org-download use-package swiper async avy-migemo ace-pinyin w3m xah-math-input flycheck hl-line+ switch-window yasnippet))))
 
 ;; enable narrow region command which is not by default
 (put 'narrow-to-region 'disabled nil)

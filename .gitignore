@@ -33,6 +33,6 @@
 !init.el
 !.gitignore
 !my-lisp/
-
+!README.md
 
 
