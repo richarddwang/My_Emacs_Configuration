@@ -5,6 +5,7 @@
 
 ;;; Code:
 
+(use-package hydra)
 
 (provide 'Other_config)
 ;;; Other_config.el ends here

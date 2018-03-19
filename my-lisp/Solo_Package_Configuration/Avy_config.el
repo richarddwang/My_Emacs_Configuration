@@ -36,18 +36,5 @@
   (setq    avy-keys (list ?a ?s ?d ?f ?j ?k ?l ?w ?e ?r ?u ?i ?t ?y ?b ?p ?q ?z ?o ?x ?c ?v ?n ?m ?g ?h))
   )
 
-;;~~~~~~~~~~~~~~
-;; Ace pinyin
-;;~~~~~~~~~~~~~~
-;; apply avy to Chinese and Japanese
-;; support avy mode and need extra config to support ace
-(require 'ace-pinyin)
-(use-package ace-pinyin
-  :ensure avy
-  :config
-  (ace-pinyin-global-mode +1)
-  (setq ace-pinyin-simplified-chinese-only-p nil)
-  )
-
 (provide 'Avy_config)
 ;;; Avconfiguration of package "Avyconfiguration of package "Avy""""

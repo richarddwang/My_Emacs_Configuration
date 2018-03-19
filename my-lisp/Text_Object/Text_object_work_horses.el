@@ -138,7 +138,9 @@ Qualification of PREV and NEXT act correctly
 ;;==================================================
 (defun kill-text-object (mark &rest args-for-mark)
   "Call MARK and cut the region marked."
-  (apply mark args-for-mark)
+  (if args-for-mark
+      (apply mark args-for-mark)
+    (funcall mark))
   (kill-region (region-beginning)(region-end)))
 
 ;;~~~~~~~~~~~~~~~~~~~
@@ -177,19 +179,24 @@ Qualification of PREV and NEXT act correctly
 ;;==================================================
 
 (defun copy-text-object (mark &rest args-for-mark)
-  (apply mark args-for-mark)
+  (if args-for-mark
+      (apply mark args-for-mark)
+    (funcall mark))
   (kill-ring-save (region-beginning)(region-end)))
 
 ;;==================================================
 ;;                      Paste
 ;;==================================================
-(defun paste-text-object (kill-or-copy args &optional pre-action)
+(defun paste-text-object (kill-or-copy args-for-kill-or-copy &optional pre-action)
   (if (and pre-action t)
       (funcall pre-action))
   
   ;; apply need list to be args, use list even if you only have one argument
   (save-excursion
-    (apply kill-or-copy args))
+    (if args-for-kill-or-copy
+	(apply kill-or-copy args-for-kill-or-copy)
+      (funcall kill-or-copy))
+    )
   
   (yank)
   )

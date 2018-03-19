@@ -1,7 +1,8 @@
 ;;; Ide_panel.el --- panel of functions for a wonderful intergrated developement environment
 ;;; Commentary:
 ;;; Code:
-
+(require 'python)
+(define-key input-decode-map (kbd "C-i") (kbd "H-i"))
 (add-hook 'python-mode-hook
 	  (lambda () (define-key python-mode-map (kbd "H-i") 'hydra-python-panel/body)))
 

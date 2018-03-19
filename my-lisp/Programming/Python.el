@@ -36,7 +36,7 @@
   ("c" hydra-flycheck/body "Flycheck")
   ("t" elpy-test "Test")
   ("d" elpy-doc "Fly Doc")
-  ("r" elpy-send-buffer "Run")
+  ("r" elpy-shell-send-buffer "Run")
   ;; Send to shell
   ("e" hydra-python-eval-panel/body "Eval")
   )
