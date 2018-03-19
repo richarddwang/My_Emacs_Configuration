@@ -1,7 +1,7 @@
 # Super_Emacs_Configuration
 # Extra works to reproduce this Emacs
 1. rg:  
-   `sudo snap install ripgrep --classic`
+   `sudo snap install rg --classic`
 2. irony:  
    I used 3.8 as <version> last time  
    `sudo apt-get install llvm-<version>`  
